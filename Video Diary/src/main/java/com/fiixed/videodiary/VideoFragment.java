@@ -10,10 +10,14 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.UUID;
+
 /**
  * Created by abell on 11/30/13.
  */
 public class VideoFragment extends Fragment {
+
+    public static final String EXTRA_VIDEO_ID = "com.fiixed.videodiary.video_id";
     private Video mVideo;
     private EditText mTags;
     private TextView mDate;
@@ -21,7 +25,8 @@ public class VideoFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        mVideo = new Video();
+        UUID videoId = (UUID)getActivity().getIntent().getSerializableExtra(EXTRA_VIDEO_ID);
+        mVideo = VideoStorage.get(getActivity()).getVideo(videoId);
     }
 
     @Override

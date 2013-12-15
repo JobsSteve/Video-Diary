@@ -16,6 +16,12 @@ public class VideoStorage {
     private VideoStorage(Context appContext) {
         mAppContext = appContext;
         mVideos = new ArrayList<Video>();
+        for(int i = 0; i < 100; i++) {
+            Video v = new Video();
+            v.setDate(v.getDate());
+            v.setTags("blah blah blah");
+            mVideos.add(v);
+        }
     }
 
     public static VideoStorage get(Context c) {

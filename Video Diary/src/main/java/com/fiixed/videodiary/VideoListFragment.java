@@ -1,6 +1,7 @@
 package com.fiixed.videodiary;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.ListFragment;
 import android.view.View;
@@ -32,6 +33,10 @@ public class VideoListFragment extends ListFragment {
     public void onListItemClick(ListView l, View v, int position, long id) {
         super.onListItemClick(l, v, position, id);
         Video video = ((VideoAdapter)getListAdapter()).getItem(position);
+
+        Intent i = new Intent(getActivity(), VideoActivity.class);
+        i.putExtra(VideoFragment.EXTRA_VIDEO_ID, video.getId());
+        startActivity(i);
     }
 
     private class VideoAdapter extends ArrayAdapter<Video> {

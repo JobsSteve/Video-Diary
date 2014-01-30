@@ -22,10 +22,21 @@ public class VideoFragment extends Fragment {
     private EditText mTags;
     private TextView mDate;
 
+
+    public static VideoFragment newInstance(UUID videoId) {
+        Bundle args = new Bundle();
+        args.putSerializable(EXTRA_VIDEO_ID, videoId);
+
+        VideoFragment videoFragment = new VideoFragment();
+        videoFragment.setArguments(args);
+
+        return videoFragment;
+    }
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        UUID videoId = (UUID)getActivity().getIntent().getSerializableExtra(EXTRA_VIDEO_ID);
+        UUID videoId = (UUID)getArguments().getSerializable(EXTRA_VIDEO_ID);
         mVideo = VideoStorage.get(getActivity()).getVideo(videoId);
     }
 

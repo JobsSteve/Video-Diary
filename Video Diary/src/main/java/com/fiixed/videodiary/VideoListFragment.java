@@ -34,9 +34,15 @@ public class VideoListFragment extends ListFragment {
         super.onListItemClick(l, v, position, id);
         Video video = ((VideoAdapter)getListAdapter()).getItem(position);
 
-        Intent i = new Intent(getActivity(), VideoActivity.class);
+        Intent i = new Intent(getActivity(), VideoPagerActivity.class);
         i.putExtra(VideoFragment.EXTRA_VIDEO_ID, video.getId());
         startActivity(i);
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        ((VideoAdapter)getListAdapter()).notifyDataSetChanged();
     }
 
     private class VideoAdapter extends ArrayAdapter<Video> {

@@ -44,23 +44,23 @@ public class VideoFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_video, container, false);
 
-        mTags = (EditText) v.findViewById(R.id.detailTagEditText);
-        mTags.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
-                //This space intentionally left blank
-            }
-
-            @Override
-            public void onTextChanged(CharSequence s, int start, int before, int count) {
-                mTags.setText(s.toString());
-            }
-
-            @Override
-            public void afterTextChanged(Editable s) {
-                //and this one too
-            }
-        });
+//        mTags = (EditText) v.findViewById(R.id.detailTagEditText);
+//        mTags.addTextChangedListener(new TextWatcher() {
+//            @Override
+//            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+//                //This space intentionally left blank
+//            }
+//
+//            @Override
+//            public void onTextChanged(CharSequence s, int start, int before, int count) {
+//                mTags.setText(s.toString());
+//            }
+//
+//            @Override
+//            public void afterTextChanged(Editable s) {
+//                //and this one too
+//            }
+//        });
 
         mDate = (TextView) v.findViewById(R.id.detailDateTimeTextView);
         mDate.setText(mVideo.getDate().toString());

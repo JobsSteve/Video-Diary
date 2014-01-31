@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import java.util.ArrayList;
+import java.util.UUID;
 
 /**
  * Created by abell on 1/31/14.
@@ -36,6 +37,35 @@ public class VideoPagerActivity extends FragmentActivity {
             @Override
             public int getCount() {
                 return mVideos.size();
+            }
+        });
+
+
+        UUID videoId = (UUID)getIntent().getSerializableExtra(VideoFragment.EXTRA_VIDEO_ID);
+        for(int i = 0; i < mVideos.size(); i++) {
+            if(mVideos.get(i).getId().equals(videoId)) {
+                mViewPager.setCurrentItem(i);
+                break;
+            }
+        }
+
+        mViewPager.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                Video video = mVideos.get(i);
+                if(video.getDate() != null) {
+                    setTitle(video.getDate().toString());
+                }
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
             }
         });
     }
